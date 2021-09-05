@@ -1,0 +1,11 @@
+CHIP Fulladder
+{
+   IN xi,yi,ci;
+   OUT ci1,si;
+   PARTS:
+   Xor(a=xi, b=yi, out=w);
+   Xor(a=w, b=ci, out=si);
+   And(a=xi, b=yi, out=x);
+   And(a=w, b=ci, out=y);
+   Or(a=x, b=y, out=ci1);
+}
