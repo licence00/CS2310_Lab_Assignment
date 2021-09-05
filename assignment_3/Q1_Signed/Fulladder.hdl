@@ -1,0 +1,17 @@
+//Fulladder gate
+CHIP Fulladder
+{
+   IN xi,yi,ci; //Takes input the carry bit and input bits of X,Y
+   OUT ci1,si; //Returns the (carry+1)bit and Sum of respective input bits that is S bit
+   PARTS:
+   // xi XOR yi XOR ci
+   Xor(a=xi, b=yi, out=w);
+   Xor(a=w, b=ci, out=si);
+   //Returns si that is sum of carry bit and input bits of X,Y
+   
+   // (xi.yi)+((xi XOR yi).ci)
+   And(a=xi, b=yi, out=x);
+   And(a=w, b=ci, out=y);
+   Or(a=x, b=y, out=ci1);
+   //Retunrs (carry+1)bit
+}
